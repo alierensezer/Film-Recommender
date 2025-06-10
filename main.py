@@ -29,14 +29,15 @@ if response.status_code == 200 and "results" in data:
     print(f"Poster: {poster}")
 
     movie_info = {
-        "title":title,
+        "title": title,
         "overview": overview,
         "vote": vote,
         "poster": poster
     }
-    with open("movie.json","w",encoding="utf-8") as f:
-        json.dump(movie_info,f, ensure_ascii=False, indent=4)
+
+    file_path = os.path.join(os.path.dirname(__file__), "movie.json")
+
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(movie_info, f, ensure_ascii=False, indent=4)
 else:
     print("Film önerisi alınamadı. API anahtarını ve bağlantını kontrol et.")
-
-
