@@ -2,8 +2,8 @@ name: Weekly Movie Update
 
 on:
   schedule:
-    - cron: '0 7 * * 1' 
-  workflow_dispatch: 
+    - cron: '0 7 * * 1'  # Pazartesi sabah 10:00 (UTC+3 için saat ayarla istersen)
+  workflow_dispatch:
 
 jobs:
   update:
@@ -19,8 +19,8 @@ jobs:
         python-version: 3.x
 
     - name: Gerekli paketleri yükle
-      run: pip install -r requirements.txt
-
+      run: |
+        pip install -r requirements.txt
 
     - name: Film verisini güncelle
       run: python main.py
@@ -31,7 +31,10 @@ jobs:
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
     - name: Değişiklikleri commit et ve pushla
+      env:
+        TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
+        git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git
         git add movie.json
-        git diff --cached --quiet || git commit -m "🔄 Haftalık film güncellemesi"
-        git push
+        git commit -m "🔄 Haftalık film güncellemesi" || echo "No changes to commit"
+        git push origin HEAD:main
