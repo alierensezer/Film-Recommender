@@ -21,6 +21,7 @@ jobs:
     - name: Gerekli paketleri yükle
       run: |
         pip install requests
+        pip install python-dotenv
 
     - name: Film verisini güncelle
       run: python main.py
