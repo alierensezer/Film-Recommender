@@ -1,0 +1,37 @@
+name: Weekly Movie Update
+
+on:
+  schedule:
+    - cron: '0 7 * * 1' 
+  workflow_dispatch: 
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Reposunu klonla
+      uses: actions/checkout@v3
+
+    - name: Python kurulumu
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - name: Gerekli paketleri yükle
+      run: |
+        pip install requests
+
+    - name: Film verisini güncelle
+      run: python main.py
+
+    - name: Git ayarları
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+    - name: Değişiklikleri commit et ve pushla
+      run: |
+        git add movie.json
+        git commit -m "🔄 Haftalık film güncellemesi"
+        git push
