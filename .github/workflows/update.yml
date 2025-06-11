@@ -19,9 +19,8 @@ jobs:
         python-version: 3.x
 
     - name: Gerekli paketleri yükle
-      run: |
-        pip install requests
-        pip install python-dotenv
+      run: pip install -r requirements.txt
+
 
     - name: Film verisini güncelle
       run: python main.py
