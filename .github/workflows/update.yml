@@ -2,7 +2,7 @@ name: Weekly Movie Update
 
 on:
   schedule:
-    - cron: '0 7 * * 1'  # Pazartesi sabah 10:00 (UTC+3 için saat ayarla istersen)
+    - cron: '0 7 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -10,31 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Reposunu klonla
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Python kurulumu
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.x
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
 
-    - name: Gerekli paketleri yükle
-      run: |
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - name: Film verisini güncelle
-      run: python main.py
+      - name: Run main.py
+        run: python main.py
 
-    - name: Git ayarları
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-    - name: Değişiklikleri commit et ve pushla
-      env:
-        TOKEN: ${{ secrets.PAT_TOKEN }}
-      run: |
-        git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git
-        git add movie.json
-        git commit -m "🔄 Haftalık film güncellemesi" || echo "No changes to commit"
-        git push origin HEAD:main
+      - name: Commit and push changes
+        env:
+          TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git
+          git add movie.json
+          git commit -m "🔄 Haftalık film güncellemesi" || echo "No changes to commit"
+          git push origin HEAD:main
