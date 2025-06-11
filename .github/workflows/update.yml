@@ -29,9 +29,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Check token length
-        run: echo "${{ secrets.PAT_TOKEN }}" | wc -c
-
+      - name: Debug print token length
+        run: |
+          echo "Token length: ${#TOKEN}"
+        env:
+          TOKEN: ${{ secrets.PAT_TOKEN }}
+          
       - name: Commit and push changes
         env:
           TOKEN: ${{ secrets.PAT_TOKEN }}
