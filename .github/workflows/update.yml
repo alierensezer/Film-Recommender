@@ -39,11 +39,9 @@ jobs:
         env:
           TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-<<<<<<< HEAD
-          git remote set-url origin https://x-access-token:$TOKEN@github.com/${{ github.repository }}.git
-=======
+
           git remote set-url origin https://x-access-token:${TOKEN}@github.com/alierensezer/Film-Recommender.git
->>>>>>> d761e5ea635973b5846e0ae14e60106bce9e6581
+
           git add movie.json
           git diff --cached --quiet || git commit -m "🔄 Haftalık film güncellemesi"
           git push origin HEAD:main
