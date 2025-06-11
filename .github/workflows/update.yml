@@ -33,11 +33,11 @@ jobs:
         run: |
           echo "Token length: ${#TOKEN}"
         env:
-          TOKEN: ${{ secrets.PAT_TOKEN }}
+          TOKEN: ${secrets.PAT_TOKEN}
           
       - name: Commit and push changes
         env:
-          TOKEN: ${{ secrets.PAT_TOKEN }}
+          TOKEN: ${secrets.PAT_TOKEN}
         run: |
 
           git remote set-url origin https://x-access-token:${TOKEN}@github.com/alierensezer/Film-Recommender.git
