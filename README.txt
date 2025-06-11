@@ -3,16 +3,14 @@ Film Recommender, TMDB API’den rastgele film önerisi çekip terminalde göste
 Özellikler
 -Python ile TMDB API’den film verisi çekme ve işleme
 
--HTML, CSS, JavaScript ve Node.js ile frontend ve backend web geliştirme
+-HTML, CSS, JavaScript ile web geliştirme
 
 -Haftalık otomatik güncelleme (GitHub Actions ile)
-
--Docker ile konteynerize çalışma
 
 -DevOps süreçlerinin entegrasyonu
 
 Kullanım
--Python scripti arka planda çalışarak veri oluşturur. Web uygulaması ise Node.js tabanlı backend ile bu veriyi sunar.
+-Python scripti arka planda çalışarak veri oluşturur. Web uygulaması ise script tarafında yazılan JavaScript kodları ile veriyi sunar.
 
 GitHub Actions
 -Haftalık güncelleme için GitHub Actions workflow’u ekleyebilirsiniz.

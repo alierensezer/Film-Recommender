@@ -7,24 +7,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 <style>
 body {
-  background-color: #121212;
+  background: linear-gradient(135deg, #0f0f1a 0%, #12131f 70%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #e0e0e0;
+  color: #d0d8dc;
   margin: 0;
   padding: 0;
+  backdrop-filter: blur(5px);
 }
 
 .container:first-child h1 {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 40px;
-  font-size: 3rem;
-  font-weight: 800;
-  color: #ff4500; /* Canlı turuncu vurgu */
-  text-shadow: 0 2px 5px rgba(255, 69, 0, 0.7);
-  letter-spacing: 2px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #40e0d0; /* Daha soft turkuaz */
+  text-shadow: 0 0 5px #40e0d0, 0 0 10px #40e0d0;
+  letter-spacing: 3px;
+  font-family: 'Orbitron', sans-serif;
 }
-
 
 .container:nth-child(2) {
   display: flex;
@@ -33,22 +34,35 @@ body {
   gap: 40px;
   max-width: 1000px;
   margin: 0 auto 80px;
-  padding: 0 20px;
-  background: #1e1e1e;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  padding: 30px 40px;
+  background: rgba(20, 25, 40, 0.9);
+  border-radius: 20px;
+  box-shadow:
+    0 0 12px #40e0d0,
+    0 0 20px #40e0d0 inset,
+    0 10px 30px rgba(0, 0, 0, 0.7);
+  border: 1.5px solid #40e0d0;
+  backdrop-filter: blur(6px);
 }
 
 .poster img {
   width: 320px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.9);
-  transition: transform 0.3s ease;
+  border-radius: 20px;
+  box-shadow:
+    0 0 8px #40e0d0,
+    0 0 15px #40e0d0 inset;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
+  filter: drop-shadow(0 0 4px #40e0d0);
 }
+
 .poster img:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(255, 69, 0, 0.8);
+  box-shadow:
+    0 0 18px #48d8c9,
+    0 0 35px #48d8c9 inset,
+    0 10px 35px rgba(72, 216, 201, 0.6);
+  filter: drop-shadow(0 0 10px #48d8c9);
 }
 
 .info {
@@ -56,30 +70,39 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: rgba(64, 224, 208, 0.07);
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(64, 224, 208, 0.2);
+  backdrop-filter: blur(4px);
 }
 
 .title {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-  color: #ff4500;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #40e0d0;
   font-weight: 900;
-  text-shadow: 0 1px 4px rgba(255, 69, 0, 0.8);
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 5px #40e0d0, 0 0 12px #40e0d0;
+  letter-spacing: 2px;
 }
 
 .vote {
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: 25px;
-  color: #ffd633;
+  color: #63e6d6;
   letter-spacing: 1.5px;
+  text-shadow: 0 0 3px #63e6d6;
 }
 
 .overview {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #cfcfcf;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #b0d8d6;
   text-align: justify;
   font-weight: 400;
+  text-shadow: 0 0 3px rgba(64, 224, 208, 0.4);
 }
 
 @media (max-width: 768px) {
@@ -87,6 +110,7 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 90%;
+    padding: 20px;
   }
   .poster img {
     width: 90%;
@@ -96,12 +120,12 @@ body {
     max-width: 100%;
     margin-top: 25px;
     text-align: center;
+    padding: 15px 20px;
   }
   .overview {
     text-align: left;
   }
 }
-
   
 </style>
 </head>
