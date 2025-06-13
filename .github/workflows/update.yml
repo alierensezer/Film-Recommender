@@ -2,7 +2,7 @@ name: Weekly Movie Update
 
 on:
   schedule:
-    - cron: "0 7 * * 1"
+    - cron: "0 7 * * 1"  # Her Pazartesi sabah 07:00'de çalışır
   workflow_dispatch:
 
 jobs:
@@ -26,13 +26,20 @@ jobs:
       - name: Run main.py
         run: python main.py
 
+      - name: Ensure Git is installed
+        run: sudo apt-get update && sudo apt-get install -y git
+
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Commit and push changes
+      - name: Add changes to Git
+        run: git add movie.json
+
+      - name: Commit changes if any
         run: |
-          git add movie.json
           git diff --cached --quiet || git commit -m "🔄 Haftalık film güncellemesi"
-          git push
+
+      - name: Push changes to GitHub
+        run: git push
