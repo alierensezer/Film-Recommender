@@ -2,7 +2,7 @@ name: Weekly Movie Update
 
 on:
   schedule:
-    - cron: '0 7 * * 1'
+    - cron: "0 7 * * 1"
   workflow_dispatch:
 
 jobs:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,19 +31,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Debug print token length
-        run: |
-          echo "Token length: ${#TOKEN}"
-        env:
-          TOKEN: ${secrets.PAT_TOKEN}
-          
       - name: Commit and push changes
-        env:
-          TOKEN: ${secrets.PAT_TOKEN}
         run: |
-
-          git remote set-url origin https://x-access-token:${TOKEN}@github.com/alierensezer/Film-Recommender.git
-
           git add movie.json
           git diff --cached --quiet || git commit -m "🔄 Haftalık film güncellemesi"
-          git push origin HEAD:main
+          git push
