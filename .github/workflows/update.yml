@@ -2,7 +2,7 @@ name: Weekly Movie Update
 
 on:
   schedule:
-    - cron: "0 7 * * 1"  # Her Pazartesi sabah 07:00'de çalışır
+    - cron: "0 7 * * 1" 
   workflow_dispatch:
 
 jobs:
@@ -39,7 +39,8 @@ jobs:
 
       - name: Commit changes if any
         run: |
-          git diff --cached --quiet || git commit -m "🔄 Haftalık film güncellemesi"
+          git diff --cached --quiet || git commit -m " Haftalık film güncellemesi"
+          git diff --cached --quiet && git commit --allow-empty -m "📌 Keep-alive commit"
 
       - name: Push changes to GitHub
         run: git push
