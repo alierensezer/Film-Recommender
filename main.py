@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 import json
 
 load_dotenv()
-API_KEY = os.getenv("TMDB_API_KEY")
+api_key = os.getenv("API_KEY")
 
 page = random.randint(1, 10)
 
-url = f"https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&language=tr-TR&page={page}"
+url = f"https://api.themoviedb.org/3/movie/popular?api_key={api_key}&language=tr-TR&page={page}"
 
 response = requests.get(url)
 data = response.json()
