@@ -1,4 +1,4 @@
-fetch('movie.json')
+fetch('movie.json?v=' + new Date().getTime())
   .then(res => res.json())
   .then(data => {
     document.getElementById('title').textContent = data.title;
