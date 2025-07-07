@@ -1,4 +1,4 @@
-Film Recommender, TMDB API’den rastgele film önerisi çekip terminalde ve web ortamında gösteren basit bir Python uygulamasıdır. Python, veri çekme ve işleme için kullanılırken; web geliştirme kısmı HTML, CSS, JavaScript ve Node.js ile yapılmaktadır. Proje, DevOps süreçlerini de içine alarak otomatik güncellemeler için GitHub Actions ile entegre edilmiştir.
+Film Recommender, TMDB API’den rastgele film önerisi çekip terminalde ve web ortamında gösteren basit bir Python uygulamasıdır. Python, veri çekme ve işleme için kullanılırken; web geliştirme kısmı HTML, CSS, JavaScript ile yapılmaktadır. Proje, DevOps süreçlerini de içine alarak otomatik güncellemeler için GitHub Actions ile entegre edilmiştir.
 
 Özellikler
 +Python ile TMDB API’den film verisi çekme ve işleme
